@@ -58,37 +58,6 @@ First run builds the index (~30 seconds). Subsequent runs load from cache.
 | `ittf_chunks.json` | 1,102 extracted rule chunks |
 | `ittf_questions.json` | 215 generated questions with answers |
 
-## Architecture
-
-```
-┌─────────────────────────────────────────────────────┐
-│                    User Question                     │
-└─────────────────────┬───────────────────────────────┘
-                      ▼
-┌─────────────────────────────────────────────────────┐
-│  Embedding Model (all-mpnet-base-v2)                │
-│  Converts question to 768-dim vector                │
-└─────────────────────┬───────────────────────────────┘
-                      ▼
-┌──────────────────────────────────────────────────────┐
-│  Hybrid Search                                        │
-│  ├── Dense: numpy dot product with chunk embeddings  │
-│  └── Sparse: BM25 keyword matching                   │
-│  Combined using Reciprocal Rank Fusion (RRF)         │
-└─────────────────────┬────────────────────────────────┘
-                      ▼
-┌─────────────────────────────────────────────────────┐
-│  Reranker (cross-encoder/ms-marco-MiniLM-L-6-v2)    │
-│  Scores (question, chunk) pairs together            │
-│  Returns top 5 most relevant                        │
-└─────────────────────┬───────────────────────────────┘
-                      ▼
-┌─────────────────────────────────────────────────────┐
-│  LLM (Llama 3.1 via Groq)                           │
-│  Generates answer from retrieved chunks             │
-└─────────────────────────────────────────────────────┘
-```
-
 ## Data
 
 - **Source**: ITTF Statutes 2025 PDF
