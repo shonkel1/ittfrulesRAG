@@ -1,0 +1,29 @@
+# Index files (large, can be regenerated)
+rag_index/
+*.pkl
+
+# Not ready yet
+evaluate.py
+finetune.py
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.Python
+*.so
+
+# Environment
+.env
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# Mac
+.DS_Store
+
+# Model cache (downloaded automatically)
+.cache/
