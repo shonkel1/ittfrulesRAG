@@ -64,6 +64,3 @@ First run builds the index (~30 seconds). Subsequent runs load from cache.
 - **Chunks**: 1,102 rule segments with hierarchical IDs (e.g., "5.7.4.1")
 - **Questions**: 215 multi-chunk questions for evaluation
 
-## License
-
-MIT
