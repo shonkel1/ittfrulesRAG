@@ -24,29 +24,7 @@ Provisional Suspension...
 Question → Embed → Search 1102 chunks → Combine results → Rerank → Top 5 → LLM → Answer
 ```
 
-## Setup
 
-### 1. Install dependencies
-
-```bash
-pip install numpy sentence-transformers rank-bm25 groq
-```
-
-### 2. Set your Groq API key
-
-```bash
-export GROQ_API_KEY="your-api-key-here"
-```
-
-Get a free key at [console.groq.com](https://console.groq.com)
-
-### 3. Run
-
-```bash
-python rag.py
-```
-
-First run builds the index (~30 seconds). Subsequent runs load from cache.
 
 ## Files
 
